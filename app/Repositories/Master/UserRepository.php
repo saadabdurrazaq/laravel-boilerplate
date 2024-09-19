@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use App\Http\Requests\User\UserUpdateRequest;
 use Illuminate\Support\Facades\Validator;
+use App\Jobs\SendWelcomeEmail;
 
 class UserRepository
 {
@@ -28,6 +29,8 @@ class UserRepository
         $user = User::create($request->validated());
 
         $user->assignRole($this->request->get('role_id'));
+
+        SendWelcomeEmail::dispatch($user);
 
         return $user->fresh();
     }
@@ -139,7 +142,8 @@ class UserRepository
             $user->update($request->validated());
             Validator::make($request->only('password'), [
                 'password' => [
-                    'required', 'string',
+                    'required',
+                    'string',
                     'min:5',
                     // 'regex:/[a-z]/',      // must contain at least one lowercase letter
                     // 'regex:/[A-Z]/',      // must contain at least one uppercase letter

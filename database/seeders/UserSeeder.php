@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
 
         $superadmin = User::create([
             'username' => 'admin',
+            'email' => 'admin@gmail.com',
             'name' => 'Admin',
             'password' => 'admin',
             'is_active' => 1,
@@ -34,6 +35,7 @@ class UserSeeder extends Seeder
 
         $manager = User::create([
             'username' => 'manager',
+            'email' => 'manager@gmail.com',
             'name' => 'Angie Murti',
             'password' => 'manager1234',
             'is_active' => 1,
@@ -41,6 +43,7 @@ class UserSeeder extends Seeder
 
         $marketing = User::create([
             'username' => 'marketing',
+            'email' => 'marketing@gmail.com',
             'name' => 'Bendot',
             'password' => 'marketing1234',
             'is_active' => 1,
@@ -48,6 +51,7 @@ class UserSeeder extends Seeder
 
         $sales = User::create([
             'username' => 'sales',
+            'email' => 'sales@gmail.com',
             'name' => 'Sari Widyaningrum',
             'password' => 'sales1234',
             'is_active' => 1,
@@ -55,6 +59,7 @@ class UserSeeder extends Seeder
 
         $purchase = User::create([
             'username' => 'purchase',
+            'email' => 'purchase@gmail.com',
             'name' => 'Buluk',
             'password' => 'purchase1234',
             'is_active' => 1,
@@ -62,6 +67,7 @@ class UserSeeder extends Seeder
 
         $inventory = User::create([
             'username' => 'inventory',
+            'email' => 'inventory@gmail.com',
             'name' => 'Butet',
             'password' => 'inventory1234',
             'is_active' => 1,
@@ -69,6 +75,7 @@ class UserSeeder extends Seeder
 
         $production = User::create([
             'username' => 'production',
+            'email' => 'prod@gmail.com',
             'name' => 'Cupek',
             'password' => 'production1234',
             'is_active' => 1,
@@ -76,6 +83,7 @@ class UserSeeder extends Seeder
 
         $exim = User::create([
             'username' => 'exim',
+            'email' => 'exim@gmail.com',
             'name' => 'Putek',
             'password' => 'exim1234',
             'is_active' => 1,
@@ -83,6 +91,7 @@ class UserSeeder extends Seeder
 
         $accounting = User::create([
             'username' => 'acc',
+            'email' => 'acc@gmail.com',
             'name' => 'Annisa Rahmawati',
             'password' => 'acc1234',
             'is_active' => 1,
@@ -90,6 +99,7 @@ class UserSeeder extends Seeder
 
         $beacukai = User::create([
             'username' => 'beacukai',
+            'email' => 'beacukai@gmail.com',
             'name' => 'Bondet',
             'password' => 'beacukai1234',
             'is_active' => 1,

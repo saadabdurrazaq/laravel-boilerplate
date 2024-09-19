@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) { 
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('username')->unique();
+            $table->string('email')->unique();
             $table->string('name');
             $table->text('photo')->nullable();
             $table->string('phone', 50)->nullable();
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->string('province', 255)->nullable();
             $table->string('zip_code', 20)->nullable();
-            $table->boolean('is_active')->default(false); 
+            $table->boolean('is_active')->default(false);
             $table->rememberToken();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
