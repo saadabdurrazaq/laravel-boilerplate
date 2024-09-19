@@ -1,0 +1,1212 @@
+{
+	"info": {
+		"_postman_id": "1737b66d-c885-410d-88a6-9646390d2641",
+		"name": "Laravel Boilerplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30237316"
+	},
+	"item": [
+		{
+			"name": "Master",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Register User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Dora\",\r\n    \"username\": \"dora\",\r\n    \"password\": \"12345678\",\r\n    \"is_active\": \"1\",\r\n    \"role_id\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/register",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APP_URL}}/api/master/users/index?page=2",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"users",
+										"index"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single User",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Tono",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "tono@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/users/show/3",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"users",
+										"show",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show My Data",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Tono",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "tono@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/users/my-data",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"users",
+										"my-data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Soft Delete Single User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/users/delete/3",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"users",
+										"delete",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Single User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Admin",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "is_active",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "role_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/users/update/1",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"users",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Permissions",
+					"item": [
+						{
+							"name": "Create Permission",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "EAT-FOOD",
+											"type": "text"
+										},
+										{
+											"key": "group_name",
+											"value": "FOODS",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/permissions/create",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"permissions",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Permissions",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Tono",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "tono@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/permissions/index",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"permissions",
+										"index"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Permission",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Tono",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "tono@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/permissions/show/3",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"permissions",
+										"show",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Permission",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Tono",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "tono@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/permissions/check/MASTER_DATA_CREATE",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"permissions",
+										"check",
+										"MASTER_DATA_CREATE"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Single Permission",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"YOYO_PLAYER\",\r\n    \"group_name\": \"YOYO\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/permissions/update/48",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"permissions",
+										"update",
+										"48"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Soft Delete Single Permission",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/permissions/delete/50",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"permissions",
+										"delete",
+										"50"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "Create Role",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"SPIDERMAN\",\r\n    \"permissions_id\": [26, 27]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/roles/store",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"roles",
+										"store"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Roles With Its Permissions",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Tono",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "tono@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/roles/index",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"roles",
+										"index"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show Single Role With Its Permissions",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Tono",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "tono@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/roles/show/10",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"roles",
+										"show",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Single Role With Its Permissions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APP_URL}}/api/master/roles/edit/10",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"roles",
+										"edit",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Single Role With Its Permissions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"BATMAN\",\r\n    \"permissions_id\": [9, 10]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/roles/update/16",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"roles",
+										"update",
+										"16"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Soft Delete Single Role",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN_FOR_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/master/roles/delete/3",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"master",
+										"roles",
+										"delete",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Get All Posts With Its Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_FOR_USER}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/posts",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Post With Its Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_FOR_USER}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/posts/1",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Single Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_FOR_USER}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_title\": \"Mom Apeeared as Father When Father is Missing\",\r\n    \"post_content\": \"Donec dictum malesuada libero, non pharetra nibh fermentum sit amet. Aenean ut iaculis neque, vel pellentesque arcu. Cras venenatis enim in pulvinar vestibulum. Phasellus egestas sapien risus. In hac habitasse platea dictumst. Sed tincidunt magna eu nulla varius varius. Sed nec tempus sapien. Curabitur eget luctus tellus. Nulla pulvinar pellentesque lectus, et congue augue. Etiam efficitur erat ipsum, quis maximus orci elementum nec. Morbi quis tortor id sapien interdum rutrum sit amet et arcu. Donec iaculis sagittis lorem sit amet maximus. Vivamus lacinia odio eget ante pretium mollis. In suscipit posuere mi. Pellentesque dignissim, felis eget viverra posuere, mi ipsum vehicula mi, non venenatis justo justo eu odio. Cras a consectetur nibh.\",\r\n    \"post_date\": \"2024-10-04\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/posts/2",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"2"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_FOR_USER}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_title\": \"Strange Childern Is Appeared When He is Missing\",\r\n    \"post_content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at magna vitae erat finibus ornare. Morbi ut quam elit. In id eros a dolor commodo sollicitudin. Nullam vulputate rhoncus felis non dictum. Praesent est sem, tristique id metus ut, tempus scelerisque erat. Aliquam malesuada dapibus augue, rutrum varius dolor gravida sit amet. Morbi pulvinar ex enim, id tempor mauris ultrices et. Fusce imperdiet mi lectus, et faucibus lectus porttitor posuere. Nullam blandit laoreet auctor. Fusce sed mollis elit. Suspendisse potenti Duis feugiat pulvinar neque, ac dignissim velit finibus ac. Proin porta molestie faucibus. Curabitur sit amet maximus erat, accumsan sodales sem. Integer in auctor dolor. Integer sagittis, est ac commodo tempus, nulla elit gravida nunc, eget placerat velit tortor id dui. Donec mollis quam non tempor imperdiet. Suspendisse ac orci lorem.\",\r\n    \"post_date\": \"2024-09-03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/posts",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_FOR_USER}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/posts/1",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Store Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_FOR_USER}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_id\": 3,\r\n    \"comment_content\": \"Aspaluern kulaiotern parutieon nio!!\",\r\n    \"comment_date\": \"2024-10-03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/comments/store",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								"store"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest({\r",
+							"    url: pm.environment.get(\"APP_URL\")+\"/api/auth/login\",\r",
+							"    method: 'POST',\r",
+							"    header: {\r",
+							"        'Accept': 'application/json',\r",
+							"        'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: 'urlencoded',\r",
+							"        urlencoded: [\r",
+							"            {key: 'username', value: 'admin'},\r",
+							"            {key: 'password', value: 'admin'}\r",
+							"        ]\r",
+							"    }\r",
+							"},\r",
+							"    (err, res) => {\r",
+							"        // Set bearer token\r",
+							"        if (!res.json().hasOwnProperty('data')) {\r",
+							"            pm.environment.set(\"BEARER_TOKEN_FOR_USER\", res.json().access_token)\r",
+							"            console.log(res.json());\r",
+							"        }\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{APP_URL}}/api/auth/login",
+					"host": [
+						"{{APP_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER_TOKEN_FOR_USER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{APP_URL}}/api/auth/logout",
+					"host": [
+						"{{APP_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,76 @@
+# Use the official PHP 8.2 FPM Alpine image as a base
+FROM php:8.2-fpm-alpine3.19 AS build
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Create the directory for PHP-FPM logs
+RUN mkdir -p /var/log/php-fpm && \
+    chown -R www-data:www-data /var/log/php-fpm
+
+# Copy the existing application directory contents
+COPY --chown=www-data:www-data . /var/www/html
+
+# Set proper permissions for the application directory
+RUN chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
+
+# Ensure the web server user (www-data) owns the directories
+# RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/public /var/www/html/bootstrap/cache
+
+# Install system dependencies
+RUN apk update && apk add --no-cache \
+    freetype-dev \
+    libjpeg-turbo-dev \
+    libpng-dev \
+    oniguruma-dev \
+    libxml2-dev \
+    icu-dev \
+    libzip-dev \
+    zip \
+    unzip \
+    git \
+    curl \
+    make \
+    gcc \
+    g++ \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mysqli
+
+# Install PHP extensions
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install -j$(nproc) gd \
+    pdo_mysql \
+    mbstring \
+    exif \
+    pcntl \
+    bcmath \
+    intl \
+    zip \
+    opcache
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Copy the custom php-fpm.conf file
+COPY docker/app/php-fpm.conf /usr/local/etc/php-fpm.conf
+
+# Copy Makefile and run the setup
+COPY Makefiledev /var/www/html/Makefile
+RUN make setup
+
+# Expose port 9000 for PHP-FPM
+EXPOSE 9000
+
+# Set up and start PHP-FPM
+RUN echo '#!/bin/sh' > /start.sh && \
+    echo 'mkdir -p /run/php && chown www-data:www-data /run/php' >> /start.sh && \
+    echo 'chmod -R o+w /var/www/html/storage' >> /start.sh && \
+    echo 'chown -R root:root /var/www/html/storage' >> /start.sh && \
+    # echo 'chmod -R 775 /var/www/html/storage /var/www/html/public /var/www/html/bootstrap/cache' >> /start.sh && \
+    echo 'php-fpm --nodaemonize --fpm-config /usr/local/etc/php-fpm.conf' >> /start.sh
+
+# Make the script executable
+RUN chmod +x "/start.sh"
+
+# Set the entry point to the script
+ENTRYPOINT ["/start.sh"]

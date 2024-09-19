@@ -1,0 +1,48 @@
+# Define variables
+DOCKER_COMPOSE = docker-compose -f docker-compose-dev.yml
+PHP = ${DOCKER_COMPOSE} run --rm dalim_app
+DB = ${DOCKER_COMPOSE} run --rm mysql
+
+# Default target
+all: install migrate
+
+# Install PHP dependencies with Composer
+install:
+	composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+# Run migrations
+migrate:
+	php artisan migrate
+
+# Seed the database (if needed)
+seed:
+	${PHP} php artisan db:seed --force
+
+# Run tests
+test:
+	${PHP} php artisan test
+
+# Clear application cache
+cache-clear:
+	${PHP} php artisan cache:clear
+
+# Build Docker images and start containers
+build:
+	${DOCKER_COMPOSE} build
+
+# Stop and remove containers
+down:
+	${DOCKER_COMPOSE} down
+
+# Start containers
+up:
+	${DOCKER_COMPOSE} up -d
+
+# Clear Laravel caches and optimize
+optimize-clear:
+	php artisan optimize:clear
+# Generate a new application key
+key-generate:
+	php artisan key:generate
+
+# Combine tasks into one target
+setup: install optimize-clear key-generate
